@@ -25,13 +25,30 @@ int main(){
         cin>>EMPLEADOS[i].sal;
     }
     for(int i=0; i<n; i++){
-        cout<<EMPLEADOS[i].num<<endl;
-        cout<<EMPLEADOS[i].nom<<endl;
+        cout<<"Numero del empleado: "<<EMPLEADOS[i].num<<endl;
+        cout<<"Nombre del empleado: "<<EMPLEADOS[i].nom<<endl;
+        cout<<"Ventas del empleado: "<<endl;
         for(int j=0; j<12; j++){
             cout<<EMPLEADOS[i].ven[j]<<" ";
         }
         cout<<endl;
-        cout<<EMPLEADOS[i].sal<<endl<<endl;
+        cout<<"Salario del empleado: "<<EMPLEADOS[i].sal<<endl<<endl;
     }
+    
+    int mayorv, v, indicador;
+    mayorv=0;
+    for(int i=0; i<n; i++){
+        v=0;
+        for(int j=0; j<12; j++){
+            v=v+EMPLEADOS[i].ven[j];
+        }
+        if(mayorv<v){
+            mayorv=v;
+            indicador=i;
+        }
+    }
+    cout<<"Empleado con la mayor venta:"<<endl;
+    cout<<"Numero: "<<EMPLEADOS[indicador].num<<endl;
+    cout<<"Nombre: "<<EMPLEADOS[indicador].nom<<endl;
     return 0;
 }
