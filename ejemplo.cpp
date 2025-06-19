@@ -34,7 +34,7 @@ int main(){
         cout<<endl;
         cout<<"Salario del empleado: "<<EMPLEADOS[i].sal<<endl<<endl;
     }
-    
+    //Parte 2//
     int mayorv, v, indicador;
     mayorv=0;
     for(int i=0; i<n; i++){
@@ -50,5 +50,20 @@ int main(){
     cout<<"Empleado con la mayor venta:"<<endl;
     cout<<"Numero: "<<EMPLEADOS[indicador].num<<endl;
     cout<<"Nombre: "<<EMPLEADOS[indicador].nom<<endl;
+    //Parte 3//
+    int ventastotales, indice;
+        for(int i=0; i<n; i++){
+            ventastotales=0;
+            for(int j=0; j<12; j++){
+                ventastotales=ventastotales+EMPLEADOS[i].ven[j];
+           }
+           if(ventastotales>100){
+                EMPLEADOS[i].sal=EMPLEADOS[i].sal*11/10;
+                cout<<"Empleado que recibio aumento:"<<endl;
+                cout<<"Numero: "<<EMPLEADOS[i].num<<endl;
+                cout<<"Nombre: "<<EMPLEADOS[i].nom<<endl;
+                cout<<"Nuevo salario: "<<EMPLEADOS[i].sal<<endl<<endl;
+           }
+        }
     return 0;
 }
