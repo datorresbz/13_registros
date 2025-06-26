@@ -17,7 +17,7 @@ void leerCorreo(correo &, string, string);
 void leerContacto(contactoEmail &, string, char, int, correo);
 void imprimeContacto(contactoEmail &);
 void modificaContacto(contactoEmail[], int);
-
+void eliminarContacto(contactoEmail[],int &);
 int main(){
     int n, op;
     string nom, user, domain;
@@ -32,11 +32,11 @@ int main(){
         cout<<"1. Agregar contacto"<<endl;
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Modificar contactos"<<endl;
+        cout<<"4. Eliminar un contacto"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Elige una opcion: "; cin>>op;
         switch(op){
             case 1:
-                cout<<"Ingrese los datos de un usuario: "<<endl;
                 cin.ignore();
                 cout<<"Ingrese el nombre del contacto: "; getline(cin,nom);
                 cout<<"Ingrese el sexo (M/F): "; cin>>sex;
@@ -63,6 +63,10 @@ int main(){
                 break;
             case 3:
                 modificaContacto(lista, n);
+                system("pause");
+                break;
+            case 4:
+                eliminarContacto(lista, n);
                 system("pause");
                 break;
             case 0:
@@ -116,4 +120,16 @@ void modificaContacto(contactoEmail lista[], int n) {
     leerContacto(lista[posicion], nom, sex, edad, lista[posicion].email);
 
     cout<<"Contacto modificado exitosamente!"<<endl;
+}
+void eliminarContacto(contactoEmail lista[],int &n){
+    int posicion;
+    cout<<"Que contacto desea borrar?"<<endl;
+    for(int i=0;i<n;i++){
+        cout<<i+1<<". "<<lista[i].nom<<endl;
+    }
+    cin>>posicion;
+    for(int i=posicion-1;i<n-1;i++){
+        lista[i]=lista[i+1];
+    }
+    n--;
 }
