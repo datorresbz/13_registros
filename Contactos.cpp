@@ -116,8 +116,8 @@ void modificaContacto(contactoEmail lista[], int n) {
     cout<<"\tUsuario: "; cin>>user;
     cout<<"\tDominio: "; cin>>domain;
 
-    leerCorreo(lista[posicion].email, user, domain);
-    leerContacto(lista[posicion], nom, sex, edad, lista[posicion].email);
+    leerCorreo(lista[posicion-1].email, user, domain);
+    leerContacto(lista[posicion-1], nom, sex, edad, lista[posicion-1].email);
 
     cout<<"Contacto modificado exitosamente!"<<endl;
 }
@@ -129,7 +129,7 @@ void eliminarContacto(contactoEmail lista[],int &n){
     }
     cin>>posicion;
     for(int i=posicion-1;i<n-1;i++){
-        lista[i]=lista[i+1];
+        lista[i]=lista[i+1];    
     }
     n--;
 }
