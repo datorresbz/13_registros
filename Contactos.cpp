@@ -18,6 +18,7 @@ void leerContacto(contactoEmail &, string, char, int, correo);
 void imprimeContacto(contactoEmail &);
 void modificaContacto(contactoEmail[], int);
 void eliminarContacto(contactoEmail[],int &);
+void mostrarEmailporbusqueda(contactoEmail[], int);
 int main(){
     int n, op;
     string nom, user, domain;
@@ -33,6 +34,7 @@ int main(){
         cout<<"2. Mostrar contactos"<<endl;
         cout<<"3. Modificar contactos"<<endl;
         cout<<"4. Eliminar un contacto"<<endl;
+        cout<<"5. Buscar contato por domain (usuario@dominio)"<<endl;
         cout<<"0. Salir"<<endl;
         cout<<"Elige una opcion: "; cin>>op;
         switch(op){
@@ -69,6 +71,9 @@ int main(){
                 eliminarContacto(lista, n);
                 system("pause");
                 break;
+            case 5:
+                mostrarEmailporbusqueda(lista,n);
+                system("pause");
             case 0:
                 cout<<"Esta seguro de salir? (S/N): ";
                 break;
@@ -132,4 +137,15 @@ void eliminarContacto(contactoEmail lista[],int &n){
         lista[i]=lista[i+1];    
     }
     n--;
+}
+void mostrarEmailporbusqueda(contactoEmail lista[],int n){
+    cout<<"Ingrese el email a buscar y mostrar: ";
+    string email;
+    cin>>email;
+    for(int i=0;i<n;i++){
+        if(lista[i].email.domain==email){
+            imprimeContacto(lista[i]);
+            cout<<endl;
+        }
+    }
 }
